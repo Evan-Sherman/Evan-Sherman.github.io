@@ -18,9 +18,29 @@
     
     <br>
 
-    <h4>TBD</h4>
+    <h4>PW Crack 5</h4>
     <p>
-        TBD
+        I have not solved the previous Password crackers, I'm simply starting with this one<br>
+        to see what I can manage. It seemswe are provided a hash and an encrypted flag,<br>
+        along with the src code to decode it. Now. we could probably just copy the decoding<br>
+        function and run it to decode the password, but that would take the fun out of it.<br>
+        We are also provided with a dictionary of possible passwords, which contains 16^4<br>
+        possible passwords, which is 65536 possible passwords. Testing all of those manually<br>
+        seems rather tedious. So, since we have no other information, the most straightforward<br>
+        option seems to be a brute force algorithm. I'll use python to implement this.<br>
+        <br>
+        <br>
+        In our first iteration, since the script terminates after entering an incorrect<br>
+        password, out solver will need to restart the process each time it tests a<br>
+        password. We will iterate through the file and test each password on the<br>
+        program, check if the word "incorrect" is in the output, and if it is not,<br>
+        we will break and print our output, which will be the flag. This has an obvious<br>
+        drawback. If the password is at the end of the file, it will take a long time<br>
+        til we will test it. Therefore, we will write a second version of this script<br>
+        that will iterate through the file backwards, which should make sure we hit<br>
+        the password as quick as possible. I will then run these scripts at the same<br>
+        time, and kill the other one once one has returned the flag. And, we retrieve<br>
+        the flag, specifically from the process going through the file backwards.
 
     </p>
     <br>
