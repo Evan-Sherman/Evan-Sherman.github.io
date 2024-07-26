@@ -18,6 +18,33 @@
     
     <br>
 
+    <h4>Eavesdrop</h4>
+    <p>
+        This CTF supplies me with a pcap file, and tasks me with finding the flag. Upon<br>
+        inspection, we see a variety of packets, but on a quick inspection, we see a repeated<br>
+        exchange of TCP packaged between 2 IPs on the same port, implying a conversation. It is,<br>
+        in fact, a conversation. As we, as the title says, eavesdrop on the conversation by reading<br>
+        the packets that are being transferred, we see that they are talking about an encrypted file<br>
+        that we can assume the flag is within. We see the first friend send the second friend the<br>
+        command to run in order to decrypt the file. The first friend then later sends the file to<br>
+        the second friend. We take the data from the file transfer, recreate the file by converting<br>
+        the hex data to binary and building the file out of it using the xxd command. We then decrypt<br>
+        the file using the command given (`openssl des3 -d -salt -in file.des3 -out file.txt -k supersecretpassword123`),<br>
+        and retrieve the flag and complete the challenge.
+         
+    </p>
+    <br>
+    <br>
+    <h4>flag_shop</h4>
+    <p>
+        This one is rather straightforward. Your job is to "purchase some flags" in order to<br>
+        allow you to purchase a more expensive flag that you can't currently afford. This<br>
+        is essentially a test in integer overflow. I ordered a number of flags that causes<br>
+        the cost of the flags to overflow, adding money to my account instead of subtracting.<br>
+        I then use my newfound fortune to purchase the real flag.
+    </p>
+    <br>
+    <br>
     <h4>PW Crack 5</h4>
     <p>
         I have not solved the previous Password crackers, I'm simply starting with this one<br>
