@@ -14,7 +14,53 @@
 
 <body>
     <h2>Welcome to the PicoCTF Blog</h2>
-    <h3>Here I document my approach to solving CTFs from the picoCTF website</h5>
-</body>
+    <h3>Here I document my approach to solving CTFs from the picoCTF website</h3>
+    
+    <br>
+
+    <h4>TBD</h4>
+    <p>
+        TBD
+
+    </p>
+    <br>
+    <br>
+
+    <h4>Picker-III</h4>
+    <p>I've solved the other 2 pickers, and here I will document my approach to the <br>
+        3rd one. First, of course, I run the program to see what I'm dealing with. <br>
+        We have a table of functions that the program tells me I can execute, and it allows <br>
+        me to read and modify any variable of my choosing. This seems rather straightforward, simply <br>
+        find the functions that executes the win condition, put it in the table, and execute it. Time to <br>
+        start reviewing the source code.<br> <br>
+
+        It seems that our function table is simply a string of function names, and the function <br>
+        name is read and then called when we enter a number. In addition, the function checks that <br>
+        the function table is still considered valid, which entails it being 4 * 32 or 128 characters long.<br>
+        So, my approach will be to set overwrite the func_table variable to be the string "win" which would <br>
+        call the win function, and then pad out the rest of the table with 125 spaces. I will generate the <br>
+        payload using python in my terminal to ensure there is no human error then inputting it manually. <br>
+        I run the line `print('win' + ' '*125 + '|'), the pipe character being there so I can see where the<br>
+        spaces end in the terminal. I then run the picker script, choose to write_variable, chose the func_table<br>
+        variable to overwrite, and copy in the payload, enclosed in quotes so that it is interpreted as a string.<br>
+        This successfully runs the win function, and I have captured the flag. The flag is in hex, so I will<br>
+        use a website to decode the hex into ASCII, and submit the flag.
+    </p>
+    <br>
+    <br>
+
+    <h4>Bit-O-Asm-4</h4>
+    <p>
+        Similar to earlier, I've solved the previous 3 iterations of this series, but I<br>
+        will document this one. We receive a text file of some assembly code, and we must<br>
+        read and interpret it, figurng out the value of register eax at  the end. This is<br>
+        fairly straightforward. The value 0x9fe1a is loaded into rbp-0x4, with I will<br>
+        now refer to as var. Var is then compared to 0x2710. Actually, on further<br>
+        inspection, I see that the difference between the 2 possible values of eax is<br>
+        whether 0x65 is added to it or subtracted from it. While this is not the preferred<br>
+        way of doing it, I can simpy try both values, and, in fact, the one where 0x65 is<br>
+        subtracted from var is in fact the flag.
+    </p>
+    </body>
 
 </html>
